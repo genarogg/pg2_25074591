@@ -4,11 +4,1235 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <title>EcoSabor - Talleres de Cocina Vegana y Vegetariana</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Variables */
+    :root {
+      --color-primary: #16a34a;
+      --color-primary-dark: #15803d;
+      --color-primary-light: #22c55e;
+      --color-secondary: #f0fdf4;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-white: #ffffff;
+      --color-black: #000000;
+      --color-gray-light: #f5f5f5;
+      --color-gray: #e0e0e0;
+      --color-gray-dark: #9e9e9e;
+      --color-footer: #14532d;
+      --color-footer-light: #166534;
+
+      --font-family: 'Poppins', sans-serif;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    /* Reset y estilos base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      color: var(--color-text);
+      line-height: 1.6;
+      background-color: var(--color-white);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      font-size: 16px;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-primary-dark);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-white);
+      border: 2px solid var(--color-white);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    /* Encabezados de sección */
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--color-text);
+    }
+
+    .section-description {
+      font-size: 18px;
+      color: var(--color-text-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Header y Navegación */
+    .header {
+      position: sticky;
+      top: 0;
+      background-color: var(--color-white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .main-nav {
+      display: flex;
+    }
+
+    .nav-list {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-link {
+      font-size: 16px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: var(--color-text);
+      margin: 5px 0;
+      transition: var(--transition);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 600px;
+      background-image: url('https://via.placeholder.com/1920x600');
+      background-size: cover;
+      background-position: center;
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    /* Talleres */
+    .talleres {
+      padding: 80px 0;
+      background-color: var(--color-secondary);
+    }
+
+    .tabs {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .tabs input[type="radio"] {
+      display: none;
+    }
+
+    .tab-label {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: var(--color-gray-light);
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      margin-right: 5px;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 30px;
+      background-color: var(--color-white);
+      border-radius: 0 var(--border-radius) var(--border-radius) var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    #tab1:checked~#content1,
+    #tab2:checked~#content2 {
+      display: block;
+    }
+
+    #tab1:checked~label[for="tab1"],
+    #tab2:checked~label[for="tab2"] {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .workshops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .workshop-card {
+      background-color: var(--color-white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+
+    .workshop-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .workshop-img img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .workshop-content {
+      padding: 20px;
+    }
+
+    .workshop-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .workshop-description {
+      color: var(--color-text-light);
+      margin-bottom: 15px;
+    }
+
+    .workshop-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .detail {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .detail-icon {
+      font-size: 16px;
+    }
+
+    .workshop-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-top: 1px solid var(--color-gray);
+    }
+
+    .workshop-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* Beneficios */
+    .beneficios {
+      padding: 80px 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-card {
+      background-color: var(--color-white);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .benefit-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .benefit-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .benefit-description {
+      color: var(--color-text-light);
+    }
+
+    /* Instructores */
+    .instructores {
+      padding: 80px 0;
+      background-color: var(--color-secondary);
+    }
+
+    .instructors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .instructor-card {
+      background-color: var(--color-white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+    }
+
+    .instructor-img img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .instructor-content {
+      padding: 20px;
+    }
+
+    .instructor-name {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .instructor-role {
+      color: var(--color-primary);
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .instructor-bio {
+      color: var(--color-text-light);
+    }
+
+    /* Testimonios */
+    .testimonios {
+      padding: 80px 0;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background-color: var(--color-white);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      box-shadow: var(--box-shadow);
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 15px;
+    }
+
+    .testimonial-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .author-workshop {
+      font-size: 14px;
+      color: var(--color-text-light);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--color-text);
+    }
+
+    /* Contacto */
+    .contacto {
+      padding: 80px 0;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .contact-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-form-container {
+      background-color: var(--color-white);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--box-shadow);
+    }
+
+    .form-title {
+      color: var(--color-text);
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px;
+      border: 1px solid var(--color-gray);
+      border-radius: var(--border-radius);
+      font-family: var(--font-family);
+      font-size: 16px;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--color-footer);
+      color: var(--color-white);
+      padding: 60px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-description {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .footer-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--color-primary-light);
+    }
+
+    .footer-links,
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a,
+    .footer-contact li {
+      font-size: 14px;
+      opacity: 0.8;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--color-primary-light);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-footer-light);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background-color: var(--color-primary);
+    }
+
+    .social-icon {
+      font-size: 18px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-footer-light);
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 40px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        height: 70px;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero {
+        height: 500px;
+      }
+
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .section-description {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        height: 400px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .tab-label {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+
+      .workshop-title {
+        font-size: 18px;
+      }
+
+      .benefit-icon {
+        font-size: 36px;
+      }
+
+      .benefit-title {
+        font-size: 18px;
+      }
+
+      .instructor-name {
+        font-size: 20px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <p class="example">data: <%= data %></p>
+  <!-- Navegación -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="https://via.placeholder.com/32" alt="Logo EcoSabor" class="logo-img">
+          <span class="logo-text">EcoSabor</span>
+        </div>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a href="#talleres" class="nav-link">Talleres</a></li>
+            <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
+            <li><a href="#instructores" class="nav-link">Instructores</a></li>
+            <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+          </ul>
+        </nav>
+        <a href="#contacto" class="btn btn-primary">Inscríbete ahora</a>
+        <button class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Descubre el Arte de la Cocina Vegana y Vegetariana</h1>
+          <p class="hero-subtitle">Aprende a crear deliciosos platos basados en plantas con nuestros talleres
+            presenciales y virtuales.</p>
+          <div class="hero-buttons">
+            <a href="#talleres" class="btn btn-primary">Ver talleres</a>
+            <a href="#beneficios" class="btn btn-outline">Conoce más</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Talleres -->
+    <section id="talleres" class="talleres">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Nuestros Talleres</h2>
+          <p class="section-description">Ofrecemos una variedad de talleres diseñados para todos los niveles, desde
+            principiantes hasta chefs experimentados.</p>
+        </div>
+
+        <div class="tabs">
+          <input type="radio" name="tabs" id="tab1" checked>
+          <label for="tab1" class="tab-label">Presenciales</label>
+
+          <input type="radio" name="tabs" id="tab2">
+          <label for="tab2" class="tab-label">Virtuales</label>
+
+          <div class="tab-content" id="content1">
+            <div class="workshops-grid">
+              <!-- Taller 1 -->
+              <div class="workshop-card">
+                <div class="workshop-img">
+                  <img src="https://via.placeholder.com/400x200" alt="Fundamentos de la Cocina Vegana">
+                </div>
+                <div class="workshop-content">
+                  <h3 class="workshop-title">Fundamentos de la Cocina Vegana</h3>
+                  <p class="workshop-description">Aprende las técnicas básicas y los ingredientes esenciales para
+                    comenzar tu viaje culinario vegano.</p>
+                  <div class="workshop-details">
+                    <div class="detail">
+                      <span class="detail-icon">⏰</span>
+                      <span class="detail-text">4 horas</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">📅</span>
+                      <span class="detail-text">Sábados, 10:00 AM</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">👥</span>
+                      <span class="detail-text">12 personas</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">📍</span>
+                      <span class="detail-text">Presencial</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="workshop-footer">
+                  <span class="workshop-price">$45</span>
+                  <a href="#contacto" class="btn btn-primary btn-sm">Reservar</a>
+                </div>
+              </div>
+
+              <!-- Taller 2 -->
+              <div class="workshop-card">
+                <div class="workshop-img">
+                  <img src="https://via.placeholder.com/400x200" alt="Repostería Vegetariana">
+                </div>
+                <div class="workshop-content">
+                  <h3 class="workshop-title">Repostería Vegetariana</h3>
+                  <p class="workshop-description">Descubre cómo crear deliciosos postres sin utilizar productos de
+                    origen animal.</p>
+                  <div class="workshop-details">
+                    <div class="detail">
+                      <span class="detail-icon">⏰</span>
+                      <span class="detail-text">3 horas</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">📅</span>
+                      <span class="detail-text">Domingos, 11:00 AM</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">👥</span>
+                      <span class="detail-text">10 personas</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">📍</span>
+                      <span class="detail-text">Presencial</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="workshop-footer">
+                  <span class="workshop-price">$40</span>
+                  <a href="#contacto" class="btn btn-primary btn-sm">Reservar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="content2">
+            <div class="workshops-grid">
+              <!-- Taller Virtual 1 -->
+              <div class="workshop-card">
+                <div class="workshop-img">
+                  <img src="https://via.placeholder.com/400x200" alt="Cocina Internacional Vegetariana">
+                </div>
+                <div class="workshop-content">
+                  <h3 class="workshop-title">Cocina Internacional Vegetariana</h3>
+                  <p class="workshop-description">Viaja por el mundo a través de recetas vegetarianas de diferentes
+                    culturas y tradiciones.</p>
+                  <div class="workshop-details">
+                    <div class="detail">
+                      <span class="detail-icon">⏰</span>
+                      <span class="detail-text">2 horas</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">📅</span>
+                      <span class="detail-text">Martes y Jueves, 7:00 PM</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">👥</span>
+                      <span class="detail-text">20 personas</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">🖥️</span>
+                      <span class="detail-text">Virtual</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="workshop-footer">
+                  <span class="workshop-price">$30</span>
+                  <a href="#contacto" class="btn btn-primary btn-sm">Inscribirse</a>
+                </div>
+              </div>
+
+              <!-- Taller Virtual 2 -->
+              <div class="workshop-card">
+                <div class="workshop-img">
+                  <img src="https://via.placeholder.com/400x200" alt="Proteínas Vegetales">
+                </div>
+                <div class="workshop-content">
+                  <h3 class="workshop-title">Proteínas Vegetales</h3>
+                  <p class="workshop-description">Aprende a preparar platos ricos en proteínas utilizando solo
+                    ingredientes vegetales.</p>
+                  <div class="workshop-details">
+                    <div class="detail">
+                      <span class="detail-icon">⏰</span>
+                      <span class="detail-text">2.5 horas</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">📅</span>
+                      <span class="detail-text">Miércoles, 6:00 PM</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">👥</span>
+                      <span class="detail-text">15 personas</span>
+                    </div>
+                    <div class="detail">
+                      <span class="detail-icon">🖥️</span>
+                      <span class="detail-text">Virtual</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="workshop-footer">
+                  <span class="workshop-price">$35</span>
+                  <a href="#contacto" class="btn btn-primary btn-sm">Inscribirse</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section id="beneficios" class="beneficios">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Beneficios de Nuestros Talleres</h2>
+          <p class="section-description">Descubre por qué nuestros talleres son la mejor opción para aprender cocina
+            vegana y vegetariana.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <!-- Beneficio 1 -->
+          <div class="benefit-card">
+            <div class="benefit-icon">🌱</div>
+            <h3 class="benefit-title">Ingredientes de Calidad</h3>
+            <p class="benefit-description">Utilizamos productos orgánicos y de temporada para garantizar el mejor sabor
+              y valor nutricional.</p>
+          </div>
+
+          <!-- Beneficio 2 -->
+          <div class="benefit-card">
+            <div class="benefit-icon">👨‍🍳</div>
+            <h3 class="benefit-title">Instructores Expertos</h3>
+            <p class="benefit-description">Nuestros chefs tienen años de experiencia en cocina vegana y vegetariana a
+              nivel internacional.</p>
+          </div>
+
+          <!-- Beneficio 3 -->
+          <div class="benefit-card">
+            <div class="benefit-icon">🔪</div>
+            <h3 class="benefit-title">Técnicas Innovadoras</h3>
+            <p class="benefit-description">Aprenderás las últimas técnicas y tendencias en la cocina basada en plantas.
+            </p>
+          </div>
+
+          <!-- Beneficio 4 -->
+          <div class="benefit-card">
+            <div class="benefit-icon">👥</div>
+            <h3 class="benefit-title">Comunidad Activa</h3>
+            <p class="benefit-description">Únete a una comunidad de entusiastas que comparten tu pasión por la cocina
+              saludable.</p>
+          </div>
+
+          <!-- Beneficio 5 -->
+          <div class="benefit-card">
+            <div class="benefit-icon">📖</div>
+            <h3 class="benefit-title">Recetas Exclusivas</h3>
+            <p class="benefit-description">Accede a recetas desarrolladas por nuestros chefs que no encontrarás en
+              ningún otro lugar.</p>
+          </div>
+
+          <!-- Beneficio 6 -->
+          <div class="benefit-card">
+            <div class="benefit-icon">⏰</div>
+            <h3 class="benefit-title">Flexibilidad</h3>
+            <p class="benefit-description">Elige entre talleres presenciales o virtuales según tu disponibilidad y
+              preferencias.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instructores -->
+    <section id="instructores" class="instructores">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Nuestros Instructores</h2>
+          <p class="section-description">Conoce a los expertos que te guiarán en tu viaje culinario vegano y
+            vegetariano.</p>
+        </div>
+
+        <div class="instructors-grid">
+          <!-- Instructor 1 -->
+          <div class="instructor-card">
+            <div class="instructor-img">
+              <img src="https://via.placeholder.com/400" alt="María Rodríguez">
+            </div>
+            <div class="instructor-content">
+              <h3 class="instructor-name">María Rodríguez</h3>
+              <p class="instructor-role">Chef Especialista en Cocina Vegana</p>
+              <p class="instructor-bio">Con más de 10 años de experiencia en restaurantes veganos de renombre
+                internacional. Especialista en técnicas de sustitución de proteínas animales.</p>
+            </div>
+          </div>
+
+          <!-- Instructor 2 -->
+          <div class="instructor-card">
+            <div class="instructor-img">
+              <img src="https://via.placeholder.com/400" alt="Carlos Vega">
+            </div>
+            <div class="instructor-content">
+              <h3 class="instructor-name">Carlos Vega</h3>
+              <p class="instructor-role">Pastelero Vegetariano</p>
+              <p class="instructor-bio">Maestro en repostería vegetariana, ha desarrollado técnicas innovadoras para
+                crear postres deliciosos sin ingredientes de origen animal.</p>
+            </div>
+          </div>
+
+          <!-- Instructor 3 -->
+          <div class="instructor-card">
+            <div class="instructor-img">
+              <img src="https://via.placeholder.com/400" alt="Lucía Martínez">
+            </div>
+            <div class="instructor-content">
+              <h3 class="instructor-name">Lucía Martínez</h3>
+              <p class="instructor-role">Nutricionista Especializada</p>
+              <p class="instructor-bio">Experta en nutrición basada en plantas, asegura que todas nuestras recetas sean
+                equilibradas y nutritivamente completas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="testimonios">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Lo Que Dicen Nuestros Estudiantes</h2>
+          <p class="section-description">Descubre las experiencias de quienes ya han participado en nuestros talleres.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Testimonio 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-img">
+                <img src="https://via.placeholder.com/100" alt="Ana García">
+              </div>
+              <div class="testimonial-author">
+                <h3 class="author-name">Ana García</h3>
+                <p class="author-workshop">Fundamentos de la Cocina Vegana</p>
+              </div>
+            </div>
+            <p class="testimonial-text">"Los talleres de EcoSabor cambiaron mi forma de ver la cocina vegana. Ahora
+              puedo preparar platos deliciosos que toda mi familia disfruta."</p>
+          </div>
+
+          <!-- Testimonio 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-img">
+                <img src="https://via.placeholder.com/100" alt="Roberto Sánchez">
+              </div>
+              <div class="testimonial-author">
+                <h3 class="author-name">Roberto Sánchez</h3>
+                <p class="author-workshop">Cocina Internacional Vegetariana</p>
+              </div>
+            </div>
+            <p class="testimonial-text">"La modalidad virtual me permitió aprender desde casa sin perder la calidad de
+              la enseñanza. Los instructores son muy atentos y responden todas las dudas."</p>
+          </div>
+
+          <!-- Testimonio 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-img">
+                <img src="https://via.placeholder.com/100" alt="Elena Martín">
+              </div>
+              <div class="testimonial-author">
+                <h3 class="author-name">Elena Martín</h3>
+                <p class="author-workshop">Repostería Vegetariana</p>
+              </div>
+            </div>
+            <p class="testimonial-text">"La repostería vegetariana parecía imposible hasta que tomé el taller con
+              Carlos. Sus técnicas son revolucionarias y los resultados, deliciosos."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section id="contacto" class="contacto">
+      <div class="container">
+        <div class="contact-wrapper">
+          <div class="section-header">
+            <h2 class="section-title">¿Listo para comenzar?</h2>
+            <p class="section-description">Inscríbete ahora y comienza tu viaje hacia una alimentación más consciente y
+              deliciosa.</p>
+          </div>
+
+          <div class="contact-form-container">
+            <h3 class="form-title">Solicita Información</h3>
+            <form class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" id="nombre" placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                  <label for="apellido">Apellido</label>
+                  <input type="text" id="apellido" placeholder="Tu apellido">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" placeholder="tu@email.com">
+              </div>
+              <div class="form-group">
+                <label for="taller">Taller de Interés</label>
+                <select id="taller">
+                  <option value="">Selecciona un taller</option>
+                  <option value="fundamentos">Fundamentos de la Cocina Vegana</option>
+                  <option value="reposteria">Repostería Vegetariana</option>
+                  <option value="internacional">Cocina Internacional Vegetariana</option>
+                  <option value="proteinas">Proteínas Vegetales</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Mensaje (opcional)</label>
+                <textarea id="mensaje" placeholder="¿Tienes alguna pregunta específica?"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Enviar Solicitud</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="logo">
+            <img src="https://via.placeholder.com/32" alt="Logo EcoSabor" class="logo-img">
+            <span class="logo-text">EcoSabor</span>
+          </div>
+          <p class="footer-description">Transformando la forma en que las personas se relacionan con la comida a través
+            de talleres de cocina vegana y vegetariana.</p>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Enlaces Rápidos</h3>
+          <ul class="footer-links">
+            <li><a href="#talleres">Talleres</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#instructores">Instructores</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Contacto</h3>
+          <ul class="footer-contact">
+            <li>info@ecosabor.com</li>
+            <li>+34 123 456 789</li>
+            <li>Calle Principal 123, Madrid</li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Síguenos</h3>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <span class="social-icon">📱</span>
+            </a>
+            <a href="#" class="social-link">
+              <span class="social-icon">📷</span>
+            </a>
+            <a href="#" class="social-link">
+              <span class="social-icon">📺</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy;
+          <script>document.write(new Date().getFullYear())</script> EcoSabor. Todos los derechos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
 </body>
+
 </html>
