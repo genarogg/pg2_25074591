@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pago</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTTD7NYC7G"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DTTD7NYC7G');
+    </script>
+</head>
+<body>
+    <form class="formulario-pago" id="paymentForm">
+        <h1>Formulario de Pago</h1>
+        
+        <div class="grupo-campo">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
+
+        <div class="grupo-campo">
+            <label for="nombre">Nombre del Dueño</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Omar Martinez" required>
+        </div>
+        
+        <div class="grupo-campo">
+            <label for="numeroTarjeta">Número de Tarjeta</label>
+            <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="1234 5678 9012 3456" required>
+        </div>
+        
+        <div class="grupo-fecha">
+            <div class="grupo-campo">
+                <label for="fechaVencimientoM">Mes</label>
+                <input type="text" id="fechaVencimientoM" name="fechaVencimientoM" placeholder="MM" required>
+            </div>
+            
+            <div class="grupo-campo">
+                <label for="fechaVencimientoY">Año</label>
+                <input type="text" id="fechaVencimientoY" name="fechaVencimientoY" placeholder="AA" required>
+            </div>
+        </div>
+        
+        <div class="grupo-campo">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" placeholder="123" required>
+        </div>
+
+        <div class="grupo-campo">
+            <label for="monto">Monto a pagar</label>
+            <input type="text" id="monto" name="monto" placeholder="$100.00" required>
+        </div>
+
+        <div class="grupo-campo">
+            <label for="tipoPago">Método de pago</label>
+            <select name="tipoPago" id="tipoPago">
+                <option value="mastercard">Mastercard</option>
+                <option value="paypal">PayPal</option>
+                <option value="wally">Wally</option>
+                <option value="zinli">Zinli</option>
+                <option value="zelle">Zelle</option>
+            </select>
+        </div>
+        
+        <div class="contenedor-botones">
+            <button type="submit" class="boton boton-primario">Pagar Ahora</button>
+            <button type="reset" class="boton boton-secundario">Limpiar</button>
+        </div>
+    </form>
+
+    <div id="paymentMessage" style="display: none; margin-top: 20px; padding: 15px; background-color: #d4edda; color: #155724; border-radius: 5px; text-align: center;">
+        Pago exitoso
+    </div>
+
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Mostrar mensaje de procesamiento
+            const submitButton = document.querySelector('.boton-primario');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Procesando...';
+            
+            try {
+                // Recolectar datos del formulario
+                const formData = {
+                    email: document.getElementById('email').value,
+                    nombre: document.getElementById('nombre').value,
+                    numeroTarjeta: document.getElementById('numeroTarjeta').value,
+                    fechaVencimientoM: document.getElementById('fechaVencimientoM').value,
+                    fechaVencimientoY: document.getElementById('fechaVencimientoY').value,
+                    cvv: document.getElementById('cvv').value,
+                    monto: document.getElementById('monto').value,
+                    tipoPago: document.getElementById('tipoPago').value
+                };
+
+                // Enviar datos al servidor
+                const response = await fetch('/formularioMascotaPago', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Mostrar mensaje de éxito
+                    document.getElementById('paymentMessage').style.display = 'block';
+                    document.getElementById('paymentForm').reset();
+                    
+                    // Ocultar mensaje después de 5 segundos
+                    setTimeout(() => {
+                        document.getElementById('paymentMessage').style.display = 'none';
+                    }, 5000);
+                } else {
+                    alert('Error en el pago: ' + (result.error || 'Error desconocido'));
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ocurrió un error al procesar el pago');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Pagar Ahora';
+            }
+        });
+    </script>
+</body>
+</html>

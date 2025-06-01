@@ -24,6 +24,9 @@
       "@router": [
         "routers/index.ts"
       ],
+      "@database" : [
+        "database/database.ts"
+      ],
       "@graphql/*": [
         "graphql/*"
       ],

@@ -5,17 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tienda de Fotografías de Mascotas</title>
   <link rel="stylesheet" href="/css/style.css" />
+
+  //. Google Analytics:
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTTD7NYC7G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+   gtag('config', 'G-DTTD7NYC7G');
+  </script>
+
 </head>
 <body>
   <header>
     <h1>Modelos con patas</h1>
     <div class="image-gallery">
       <img src="img/adorable.jpeg" alt="firulai 1" />
-      <img src="img/gatoMarron.jpg" alt="michi" />
+      <img src="img/gatoMarron.jpg" alt="gato1" />
       <img src="img/mono.jpg" alt= "mono" />
-      <img src="img/perroMarronBlanco.jpeg" alt="firulai">
-      <img src="img/perroNegro.jpeg" alt= "firulai 2">
-      <img src="img/gatiito.jpeg " alt="gato"> 
+      <img src="img/perroMarronBlanco.jpeg" alt="firulai 2">
+      <img src="img/perroNegro.jpeg" alt= "firulai 3">
+      <img src="img/gatiito.jpeg " alt="gato2"> 
+      <img src="img/gatitoBlancoyNegro.jpg" alt="gato3">
+      <img src="img/OIP.jpeg" alt="gato4">
     </div>
  </header>
  <main>
@@ -43,7 +58,7 @@
    </section>
    <section id="desventajas">
      <h2>Desventajas de una tienda de fotografías de mascotas en línea</h2>
-     <ul>
+     <ul>;
        <li>Dependencia de la conexión a internet para acceder al sitio.</li>
        <li>Posible dificultad para transmitir la calidad real de las fotos en pantalla.</li>
        <li>Competencia alta con otras tiendas y fotógrafos en línea.</li>
@@ -54,8 +69,11 @@
 
         
   </main>
-  <a href="/formulario-mascota" target = "_blank"  class="boton">Haga clic aquí para agendar cita</a><br>
-  <a href="https://www.instagram.com/augustos.martinez/" target="_blank" class="link">Visita nuestro Instagram</a>
+  <div class="contenedor-botones-links">
+    <a href="/formularioMascota" target = "_blank"  class="boton">Haga clic aquí para agendar cita</a><br>
+    <a href="/formularioMascotaPago" target = "_blank"  class="boton">Haga clic aquí para pagar </a><br>
+    <a href="https://www.instagram.com/augustos.martinez/" target="_blank" class="link">Visita nuestro Instagram</a>
+  </div>
  </body>
  </html>
 

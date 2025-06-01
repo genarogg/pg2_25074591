@@ -5,71 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Agenda cita</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+  //. Google Analytics:
+
+  <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTTD7NYC7G"></script>
+ <script>
+     window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'G-DTTD7NYC7G');
+ </script>
+
 </head>
 <body>
-    <main>
+    <form action="/contact/add" method="post" id="formulario">
         <h1>Agenda tu cita</h1>
-       <form action="formulario" method="get"> 
-            <tr>
-                <td>
-                    <label for="Nombre">Nombre del dueno</label>
-                    <input type="text" name="Nombre" placeholder="Omar Martinez" id="Nombre">
-                </td>
-            </tr>
 
-            <tr>
-                <td>
-                    <label for="Nombre Mascota"> Nombre de la mascota</label>
-                    <input type="text" name="Nombre Mascota" placeholder="Lola" id="Nombre Mascota">
-                </td>
-            </tr>
+        <div class="form-group">
+            <label for="nombre">Nombre del dueño</label>
+            <input type="text" name="nombre" placeholder="Omar Martinez" id="Nombre" required>
+        </div>
 
-            <tr>
-                <td>
-                    <label for="Telefono">Telefono</label>
-                    <input type="text" name="Telefono" placeholder="123456789" id="Telefono">
-                </td>
-            </tr>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="alguien@gmail.com" id="correo" required>
+        </div>
 
-            <tr>
-                <td>
-                    <label for="Animal">Animal</label>
-                    <select name="Animal" id="Animal">
-                        <option id="Animal">Perro</option>
-                        <option id="Animal">Gato</option>
-                        <option id="Animal">Pez</option>
-                        <option id="Animal">Hanster </option>
-                        <option id="Animal">Mono</option>
-                        <option id="Animal">Ave</option>
-                        <option value="Animal">Morrocoy</option>
-                    </select>
-                </td>
-            </tr>
+        <div class="form-group">
+            <label for="comentario">Comentario</label>
+            <textarea name="comentario" id="comentario" cols="30" rows="10" 
+                      placeholder="Escribe un comentario" required></textarea>
+        </div>
 
+        <!-- Widget de reCAPTCHA -->
+        <div class="form-group">
+            <div class="g-recaptcha" 
+                 data-sitekey="6LcuyFArAAAAALy4bOg3V83aObyBx3BbwhBwlP2r"
+                 data-callback="enableSubmitButton"></div>
+            <small id="recaptcha-error" class="error-message" style="color:red; display:none;">
+                Por favor verifica que no eres un robot
+            </small>
+        </div>
 
-            <tr>
-                <td>
-                    <label for="Fecha">Fecha de la cita</label>
-                    <input type="date" name="Fecha" id="Fecha">
-                </td>
-            </tr>
+        <div class="contenedor-botones">
+            <button type="submit" class="boton boton-primario" id="submit-button" disabled>Guardar</button>
+            <button type="reset" class="boton boton-secundario">Limpiar</button>
+        </div>
+    </form>
 
+    <script>
+        // Habilita el botón cuando reCAPTCHA es completado
+        function enableSubmitButton() {
+            document.getElementById('submit-button').disabled = false;
+            document.getElementById('recaptcha-error').style.display = 'none';
+        }
 
-            <tr>
-                <td>
-                    <input type="submit">
-                </td>
-            </tr>
+        // Validación antes de enviar
+        document.getElementById('formulario').addEventListener('submit', function(e) {
+            const response = grecaptcha.getResponse();
 
-            <tr>
-                <td>
-                    <input type="reset">
-                </td>
-            </tr>
-       </form>
-       
-    
-    
-   </main>
-</body>            
+            if (response.length === 0) {
+                e.preventDefault(); // Bloqueamos el envío
+                document.getElementById('recaptcha-error').style.display = 'block';
+                return;
+            }
+
+        });
+    </script>
+</body>
 </html>

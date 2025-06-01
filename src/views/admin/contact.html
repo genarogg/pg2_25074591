@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos Registrados</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <h1>Lista de Contactos Registrados</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Comentario</th>
+                <th>IP</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% contacts.forEach(contact => { %>
+                <tr>
+                    <td><%= contact.id %></td>
+                    <td><%= contact.name %></td>
+                    <td><%= contact.email %></td>
+                    <td><%= contact.comment %></td>
+                    <td><%= contact.ip_address %></td>
+                    <td><%= contact.created_at %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/contact">Volver al formulario de contacto</a>
+</body>
+</html>
